@@ -82,3 +82,4 @@ task_manager/
 |-------|---------------------------------------------------------|
 | admin | Tout : créer/modifier/supprimer tâches ET utilisateurs  |
 | user  | Voir ses propres tâches, changer leur statut seulement  |
+"# tasks_tracker" 
