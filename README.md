@@ -1,86 +1,41 @@
-# 🗂 Task Manager — Projet PHP Complet
+# Task Tracker
 
-## Structure du projet
+A role-based task management web application built with PHP, MySQL, and Bootstrap. Developed as part of a web development course to practice full-stack PHP concepts including MVC architecture, authentication, sessions, and database management.
 
-```
-task_manager/
-│
-├── config/
-│   ├── database.php       ← Connexion PDO (try/catch)
-│   ├── auth.php           ← requireLogin() / requireAdmin()
-│   └── base.sql           ← Créer la base de données
-│
-├── models/
-│   ├── User.php           ← CRUD users (classe OOP)
-│   └── Task.php           ← CRUD tasks (classe OOP)
-│
-├── controllers/
-│   ├── authController.php ← Login / Logout
-│   ├── taskController.php ← CRUD tâches + export CSV
-│   └── userController.php ← CRUD utilisateurs (admin)
-│
-├── views/
-│   ├── login.php          ← Formulaire de connexion
-│   ├── dashboard.php      ← Tableau de bord (stats)
-│   ├── layout.php         ← Sidebar partagée (include)
-│   ├── footer.php         ← Fermeture HTML partagée
-│   │
-│   ├── admin/
-│   │   ├── tasks/
-│   │   │   ├── list.php   ← Toutes les tâches
-│   │   │   ├── create.php ← Créer une tâche
-│   │   │   └── edit.php   ← Modifier une tâche
-│   │   └── users/
-│   │       ├── list.php   ← Tous les utilisateurs
-│   │       ├── create.php ← Créer un user
-│   │       └── edit.php   ← Modifier un user
-│   │
-│   └── user/
-│       └── mes_taches.php ← Tâches du user connecté
-│
-└── seed.php               ← Crée le compte admin (1 seule fois)
-```
+## Tech Stack
 
----
+- **Backend:** PHP 8.2
+- **Database:** MySQL (PDO)
+- **Frontend:** Bootstrap 5, Bootstrap Icons
+- **Architecture:** MVC (Model - View - Controller)
+- **Server:** Apache (XAMPP)
+
 
 ## Installation
 
-1. Copie le dossier `task_manager/` dans `htdocs/` (XAMPP) ou `www/` (WAMP)
-2. Ouvre phpMyAdmin et exécute `config/base.sql`
-3. Visite `http://localhost/task_manager/seed.php` pour créer l'admin
-4. **Supprime `seed.php`** après
-5. Va sur `http://localhost/task_manager/views/login.php`
-6. Connecte-toi : `admin` / `admin123`
+1. Clone the repository into your htdocs folder
 
----
+git clone https://github.com/oumayma14/tasks_tracker.git
 
-## Concepts PHP utilisés (carte de révision)
+2. Open phpMyAdmin and run config/base.sql to create the database
 
-| Concept              | Où dans le projet                        | Fichier de cours |
-|----------------------|------------------------------------------|------------------|
-| Variables & echo     | Partout                                  | 2_Variables.php  |
-| if / else            | Badges couleur, redirect par rôle        | 3_conditions.php |
-| switch               | Couleur statut/priorité dans les vues    | switch.php       |
-| for / foreach        | Affichage des listes, stats dashboard    | 4_Boucles.php    |
-| while                | fgetcsv() dans l'export                  | 5_While.php      |
-| Fonctions            | requireLogin(), requireAdmin()           | function.php     |
-| Formulaires POST     | Login, create, edit partout              | form.php         |
-| Sessions             | $_SESSION["user"], messages d'erreur     | tp_panier.php    |
-| PDO / MySQL          | Tous les modèles                         | db.php           |
-| CRUD complet         | User.php, Task.php, controllers          | index.php        |
-| password_hash/verify | authController, User.php                 | authController   |
-| include/require      | layout.php, footer.php dans toutes vues  | layout.php       |
-| Fichiers CSV         | taskController export, fopen/fputcsv     | produits.php     |
-| MVC                  | Architecture globale du projet           | userController   |
-| OOP (classes)        | User.php, Task.php                       | (nouveau)        |
+3. Visit http://localhost/task_manager/seed.php to create the default admin account
 
----
+4. Delete seed.php after running it
 
-## Rôles
+5. Go to http://localhost/task_manager/views/login.php
 
-| Rôle  | Peut faire                                              |
-|-------|---------------------------------------------------------|
-| admin | Tout : créer/modifier/supprimer tâches ET utilisateurs  |
-| user  | Voir ses propres tâches, changer leur statut seulement  |
-"# tasks_tracker" 
-"# tasks_tracker" 
+## Default Credentials
+
+| Role  | Username | Password |
+|-------|----------|----------|
+| Admin | admin    | password |
+
+Change the password after first login.
+
+## Roles
+
+| Role  | Permissions |
+|-------|-------------|
+| Admin | Create, edit, delete tasks and users. Export CSV. View all tasks. |
+| User  | View assigned tasks. Update task status only. |
